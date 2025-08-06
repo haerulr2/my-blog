@@ -1,47 +1,74 @@
-import { cn } from "@/lib/utils"
-
 export default function Home() {
   return (
-    <main className="relative">
-      <div className="flex flex-col items-center justify-center h-[500px] my-20 px-15">
-        <div className="w-100 h-20 bg-red-500"></div>
-        <div className="flex flex-col items-center justify-center">
-          <div className="p-7 border-1 border-b-0 border-red-500 border-dashed">
-            <h1 className="text-6xl font-bold">A Dev&apos;s Playground in the Wild</h1>
+    <main className='relative'>
+      <div className='flex flex-col items-center justify-center h-[500px] my-20 px-15'>
+        <div className='w-100 h-20 border-x-1 border-red-500 border-dashed'></div>
+        <div className='flex flex-col items-center justify-center relative'>
+          {/* Divider */}
+          <div className='absolute -top-[60px] left-0 w-0 h-[calc(100%+120px)] border-s-1 border-red-500 border-dashed'></div>
+
+          <div className='p-7 border-1 border-b-0 border-red-500 border-dashed'>
+            {/* Title */}
+            <h1 className='text-6xl font-bold'>
+              A Dev&apos;s Playground in the Wild
+            </h1>
           </div>
-          <div className="flex p-10 border-1 border-red-500 border-dashed w-full">
-            <p className="text-xl m-auto">
+          <div className='flex p-10 border-1 border-red-500 border-dashed w-full'>
+            {/* Description */}
+            <p className='text-xl m-auto'>
               I build. I break. I document.
               <br />
-              Welcome to the corner of the web where code meets chaos — and clarity.
+              Welcome to the corner of the web where code meets chaos — and
+              clarity.
             </p>
           </div>
-          <div className="p-5 border-1 border-t-0 border-red-500 border-dashed">
-            {/* ANCHOR: Terminal command */}
-            <div className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 pb-4 max-w-md mx-auto">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+          <div className='p-5 md:px-8 border-b-1 border-red-500 border-dashed relative'>
+            {/* Divider */}
+            <div className='absolute top-0 left-0 w-0 h-[calc(100%+60px)] border-s-1 border-red-500 border-dashed'></div>
+
+            {/* Terminal command */}
+            <div className='bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 pb-4 max-w-md mx-auto'>
+              <div className='flex items-center justify-between'>
+                <div className='flex items-center space-x-2'>
+                  <div className='w-3 h-3 bg-red-500 rounded-full'></div>
+                  <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
+                  <div className='w-3 h-3 bg-green-500 rounded-full'></div>
                 </div>
-                <span className="text-sm text-neutral-500">Terminal</span>
+                <span className='text-sm text-neutral-500'>Terminal</span>
               </div>
-              <div className="mt-3 text-neutral-300 font-mono text-sm px-3">
+              <div className='mt-3 text-neutral-300 font-mono text-sm px-3'>
                 ~$ running on self-hosted node & public chaos
                 <br />
-                {/* ANCHOR: Animated loading dots */}
+                {/* Animated loading dots */}
                 <span>
-                  &gt; <span className="inline-block animate-pulse">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:0.2s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:0.4s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:0.6s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:0.8s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:1s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:1.2s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:1.4s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:1.6s]">.</span>
-                  <span className="inline-block animate-pulse [animation-delay:1.8s]">.</span>
+                  &gt; <span className='inline-block animate-pulse'>.</span>
+                  <span className='inline-block animate-pulse [animation-delay:0.2s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:0.4s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:0.6s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:0.8s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:1s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:1.2s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:1.4s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:1.6s]'>
+                    .
+                  </span>
+                  <span className='inline-block animate-pulse [animation-delay:1.8s]'>
+                    .
+                  </span>
                 </span>
                 <br />
                 &gt; Haerul Fajar
@@ -49,7 +76,11 @@ export default function Home() {
                 &gt; Web Developer
               </div>
             </div>
+            {/* Divider */}
+            <div className='absolute top-0 right-0 w-0 h-[calc(100%+60px)] border-s-1 border-red-500 border-dashed'></div>
           </div>
+          {/* Divider */}
+          <div className='absolute -top-[60px] right-0 w-0 h-[calc(100%+120px)] border-s-1 border-red-500 border-dashed'></div>
         </div>
       </div>
     </main>
