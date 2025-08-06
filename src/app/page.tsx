@@ -1,19 +1,29 @@
 export default function Home() {
   return (
     <main className='relative'>
-      <div className='flex flex-col items-center justify-center h-[500px] my-20 px-15'>
-        <div className='w-100 h-20 border-x-1 border-red-500 border-dashed'></div>
+      <div className='flex flex-col items-center justify-center h-[500px] my-20 px-15 relative'>
+        <div className='px-50 h-20 border-x-1 border-neutral-500 border-dashed relative opacity-30'></div>
         <div className='flex flex-col items-center justify-center relative'>
           {/* Divider */}
-          <div className='absolute -top-[60px] left-0 w-0 h-[calc(100%+120px)] border-s-1 border-red-500 border-dashed'></div>
+          <div className='absolute -top-[60px] left-0 w-0 h-[calc(100%+120px)] border-s-1 border-neutral-500 border-dashed opacity-30'></div>
+          <div className='absolute -top-[60px] right-0 w-0 h-[calc(100%+120px)] border-s-1 border-neutral-500 border-dashed opacity-30'></div>
+          <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
 
-          <div className='p-7 border-1 border-b-0 border-red-500 border-dashed'>
+          <div className='p-7 px-12 relative'>
+            {/* Divider */}
+            <div className='absolute top-0 -left-[60px] h-full w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
+            <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
+
             {/* Title */}
             <h1 className='text-6xl font-bold'>
               A Dev&apos;s Playground in the Wild
             </h1>
           </div>
-          <div className='flex p-10 border-1 border-red-500 border-dashed w-full'>
+
+          <div className='flex p-10 w-full relative'>
+            {/* Divider */}
+            <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
+
             {/* Description */}
             <p className='text-xl m-auto'>
               I build. I break. I document.
@@ -22,9 +32,11 @@ export default function Home() {
               clarity.
             </p>
           </div>
-          <div className='p-5 md:px-8 border-b-1 border-red-500 border-dashed relative'>
+
+          <div className='p-5 md:px-8 relative'>
             {/* Divider */}
-            <div className='absolute top-0 left-0 w-0 h-[calc(100%+60px)] border-s-1 border-red-500 border-dashed'></div>
+            <div className='absolute top-0 left-0 w-0 h-[calc(100%+60px)] border-s-1 border-neutral-500 border-dashed opacity-30'></div>
+            <div className='absolute top-0 right-0 w-0 h-[calc(100%+60px)] border-s-1 border-neutral-500 border-dashed opacity-30'></div>
 
             {/* Terminal command */}
             <div className='bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 pb-4 max-w-md mx-auto'>
@@ -76,11 +88,7 @@ export default function Home() {
                 &gt; Web Developer
               </div>
             </div>
-            {/* Divider */}
-            <div className='absolute top-0 right-0 w-0 h-[calc(100%+60px)] border-s-1 border-red-500 border-dashed'></div>
           </div>
-          {/* Divider */}
-          <div className='absolute -top-[60px] right-0 w-0 h-[calc(100%+120px)] border-s-1 border-red-500 border-dashed'></div>
         </div>
       </div>
     </main>
@@ -126,6 +134,7 @@ export default function Home() {
 //               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
 //             </div>
 //             <span className="text-sm text-neutral-500">Terminal</span>
+
 //           </div>
 //           <div className="mt-3 text-neutral-300 font-mono text-sm">
 //             ~ running on self-hosted node & public chaos
