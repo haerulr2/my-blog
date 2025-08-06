@@ -43,8 +43,8 @@ const eslintConfig = [
       'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
       'eol-last': 'error',
       'comma-dangle': ['error', 'always-multiline'],
-      quotes: ['error', 'single', { avoidEscape: true }],
-      semi: ['error', 'always'],
+      'quotes': ['error', 'single', { avoidEscape: true }],
+      'semi': ['error', 'always'],
 
       // ANCHOR: React specific rules
       'react/jsx-uses-react': 'off',
