@@ -1,9 +1,9 @@
-'use client';
-
 import CardBlog from './card-blog';
+import { getAllPosts } from '@/lib/getPosts';
 
 // ANCHOR: Blog list component that displays blog posts in a card layout
 export default function ListBlog() {
+  const posts = getAllPosts();
   return (
     <section id='blog' className='py-20'>
       <div className='container mx-auto px-4 md:px-8'>
@@ -17,9 +17,9 @@ export default function ListBlog() {
           </p>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          <CardBlog />
-          <CardBlog />
-          <CardBlog />
+          {posts.map(post => (
+            <CardBlog key={post.slug} post={post} />
+          ))}
         </div>
       </div>
     </section>

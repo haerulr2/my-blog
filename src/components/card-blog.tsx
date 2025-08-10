@@ -1,30 +1,30 @@
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import type { Post } from '@/lib/getPosts';
 
-export default function CardBlog() {
+type Props = { post: Omit<Post, 'content'> };
+
+export default function CardBlog({ post }: Props) {
+  const imageSrc = post.image || '/globe.svg';
   return (
     <div className='bg-black/50 rounded-lg p-6 border border-neutral-500 relative'>
       <Image
-        src='/ver1cel.svg'
+        src={imageSrc}
         loading='lazy'
-        onError={e => {
-          e.currentTarget.src = '/globe.svg';
-        }}
         className='rounded-lg mb-2'
-        alt='Blog Post 1'
+        alt={post.title}
         width={600}
         height={400}
       />
-      <h3 className='text-lg font-bold mb-1'>Blog Post 1</h3>
-      <p className='text-neutral-400 mb-2'>
-        This is a description of the blog postThis is a description of
-      </p>
-      <a
-        href='/blog/1'
+      <h3 className='text-lg font-bold mb-1'>{post.title}</h3>
+      <p className='text-neutral-400 mb-2'>{post.description}</p>
+      <Link
+        href={`/post/${post.slug}`}
         className='absolute bottom-2 right-2 text-sm text-white hover:text-neutral-400 transition-colors flex items-center gap-2'
       >
         Read more <ArrowRight className='w-4 h-4' />
-      </a>
+      </Link>
     </div>
   );
 }
