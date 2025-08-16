@@ -131,7 +131,7 @@ Use standard Markdown syntax with MDX features:
 
 **Bold text** and *italic text*
 
-
+```
 > example
 ```
 
