@@ -46,7 +46,7 @@ This blog showcases technical articles, build logs, thought dumps, and digital d
 blog-haerulr2/
 ├── src/
 │   ├── app/                    # Next.js App Router
-│   │   ├── blog/              # Blog routes
+│   │   ├── post/              # Blog routes
 │   │   │   └── [slug]/        # Dynamic blog post routes
 │   │   ├── components/        # React components
 │   │   │   ├── navbar.tsx     # Navigation component
