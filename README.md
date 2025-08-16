@@ -131,13 +131,8 @@ Use standard Markdown syntax with MDX features:
 
 **Bold text** and *italic text*
 
-```jsx
-function Example() {
-  return <div>JSX in MDX!</div>
-}
-```
 
-> Blockquote example
+> example
 ```
 
 ### 4. Automatic Updates
@@ -152,7 +147,7 @@ The blog list and routing will automatically update when you add new MDX files.
 
 ### Layout
 - **Main Layout**: Edit `src/app/layout.tsx`
-- **Blog Layout**: Modify `src/app/blog/[slug]/layout.tsx`
+- **Blog Layout**: Modify `src/app/post/[slug]/layout.tsx`
 - **Components**: Update components in `src/app/components/`
 
 ### Content
