@@ -45,28 +45,16 @@ This blog showcases technical articles, build logs, thought dumps, and digital d
 ```
 blog-haerulr2/
 ├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── post/              # Blog routes
-│   │   │   └── [slug]/        # Dynamic blog post routes
+│   ├── app/                   # Next.js App Router
+│   │   ├── post/              # Blog post routes
 │   │   ├── components/        # React components
-│   │   │   ├── navbar.tsx     # Navigation component
-│   │   │   ├── hero.tsx       # Hero section
-│   │   │   ├── list-blog.tsx  # Blog list component
-│   │   │   ├── card-blog.tsx  # Blog card component
-│   │   │   └── mdx-renderer.tsx # MDX content renderer
 │   │   ├── content/           # MDX blog posts
-│   │   │   ├── welcome.mdx    # Welcome post
-│   │   │   ├── about.mdx      # About post
-│   │   │   └── getting-started.mdx # Getting started guide
 │   │   ├── globals.css        # Global styles
 │   │   └── layout.tsx         # Root layout
 │   ├── mdx-components.tsx     # MDX component overrides
 │   └── utils/                 # Utility functions
-│       ├── mdx.ts             # MDX file processing
-│       └── merge-class.ts     # CSS class merging utility
 ├── public/                    # Static assets
-├── package.json               # Dependencies and scripts
-└── README.md                  # This file
+└── package.json               # Dependencies and scripts
 ```
 
 ## 🚀 Getting Started
