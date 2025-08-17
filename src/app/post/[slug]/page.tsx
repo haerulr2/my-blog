@@ -19,11 +19,11 @@ export default async function Page({
   
   return (
     <main className='relative'>
-      <article className='py-20'>
+      <article className='pb-20 pt-40'>
         <div className='container mx-auto px-4 md:px-8'>
           {/* Header */}
           <div className='max-w-4xl mx-auto mb-12'>
-            <div className='flex flex-col gap-1 mb-8'>
+            <div className='flex flex-col gap-1 mb-12'>
               <h1 className='text-3xl md:text-4xl font-bold text-start mb-4'>
                 {post.title}
               </h1>
@@ -41,8 +41,8 @@ export default async function Page({
                 src={post.image}
                 alt={post.title}
                 width={800}
-                height={400}
-                className='w-full h-64 md:h-80 object-cover rounded-lg'
+                height={600}
+                className='w-full h-auto object-cover rounded-lg'
               />
             </div>
           </div>
