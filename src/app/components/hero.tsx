@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <div className='flex flex-col items-center justify-center h-[500px] mb-20 mt-40 px-15 relative'>
+    <div className='flex flex-col items-center justify-center h-screen md:h-auto pb-20 pt-6 md:pt-40 px-15 relative overflow-hidden'>
       <div className='px-50 h-20 border-x-1 border-neutral-500 border-dashed relative opacity-30'></div>
       <div className='flex flex-col items-center justify-center relative min-w-2/3'>
         {/* Divider */}
@@ -10,18 +10,18 @@ export default function Hero() {
         <div className='absolute -top-[60px] right-0 w-0 h-[calc(100%+120px)] border-s-1 border-neutral-500 border-dashed opacity-30'></div>
         <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
 
-        <div className='p-7 px-12 relative w-full'>
+        <div className='p-7 md:px-12 relative w-full'>
           {/* Divider */}
           <div className='absolute top-0 -left-[60px] h-full w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
           <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
 
           {/* Title */}
-          <h1 className='text-6xl font-bold text-center'>
+          <h1 className='text-5xl md:text-6xl font-bold text-center'>
             A Dev&apos;s Playground in the Wild
           </h1>
         </div>
 
-        <div className='flex p-10 w-full relative'>
+        <div className='flex p-7 md:p-10 w-full relative'>
           {/* Divider */}
           <div className='absolute bottom-0 -left-[60px] h-0 w-[calc(100%+120px)] border-t-1 border-neutral-500 border-dashed opacity-30'></div>
 
