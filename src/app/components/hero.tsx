@@ -36,7 +36,7 @@ export default function Hero() {
               </div>
               <span className='text-xs text-[var(--color-text-tertiary)]'>Terminal</span>
             </div>
-            <div className='p-4 text-[var(--color-text-secondary)] font-mono text-sm space-y-1'>
+            <div className='p-4 text-[var(--color-text-secondary)] font-mono text-sm space-y-1 text-start'>
               <p>~$ running on self-hosted node &amp; public chaos</p>
               <p>
                 &gt;{' '}
