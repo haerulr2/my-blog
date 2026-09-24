@@ -3,12 +3,14 @@
 ## Commands
 
 ```bash
-npm run dev        # Next.js dev server (Turbopack)
-npm run build      # Production build — run this to verify changes
-npm run lint       # ESLint (runs `eslint .`, NOT `next lint`)
+pnpm dev           # Next.js dev server (Turbopack)
+pnpm build         # Production build — run this to verify changes
+pnpm lint          # ESLint (runs `eslint .`, NOT `next lint`)
 ```
 
-No test runner is configured. Use `npm run build` as the primary verification step.
+Package manager is **pnpm**. Do not use `npm` or `yarn`.
+
+No test runner is configured. Use `pnpm build` as the primary verification step.
 
 ## Architecture
 
