@@ -1,113 +1,122 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/utils';
+import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
+
+const emptySubscribe = () => () => {};
+function useMounted() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
 
 export default function Navbar() {
+  const mounted = useMounted();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [isBlog, setIsBlog] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    if (window.location.pathname.includes('/post/')) {
+  useState(() => {
+    if (typeof window !== 'undefined' && window.location.pathname.includes('/post/')) {
       setIsBlog(true);
     }
-  }, []);
+  });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const links = [
+    { href: 'https://haerulr2.dev/#about', label: 'about' },
+    { href: 'https://haerulr2.dev/#projects', label: 'projects' },
+    { href: 'https://haerulr2.dev/#contact', label: 'contact' },
+    { href: '/', label: 'blog' },
+  ];
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-transparent py-5'
-      )}
-    >
-      <div className='container mx-auto px-4 md:px-8'>
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-4'>
-            {isBlog && (
-              <>
+    <nav className='sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg-glass)] backdrop-blur-xl transition-colors'>
+      <div className='mx-auto flex max-w-[1100px] items-center justify-between px-6 py-4 md:px-12'>
+        {/* Logo with optional back button */}
+        <div className='flex items-center gap-3'>
+          {isBlog && (
+            <>
               <Link
-                href="/"
-                aria-label="Back"
-                className={cn(
-                  'text-neutral-400 hover:text-white transition-colors p-1 focus:outline-none',
-                  'flex items-center gap-1 cursor-pointer'
-                )}
+                href='/'
+                aria-label='Back'
+                className='flex items-center gap-1 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)] no-underline'
               >
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width='18' height='18' fill='none' viewBox='0 0 24 24'>
+                  <path d='M15 19l-7-7 7-7' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
                 </svg>
-                  Back
-                </Link>
-                <div className='h-7 w-px bg-neutral-400'></div>
-              </>
-            )}
-            <Link
-              href='https://haerulr2.dev'
-              className='text-white font-bold text-2xl tracking-tighter'
-            >
-              Haerulr2<span className='text-neutral-400'>.</span>
-            </Link>
-          </div>
-
-          <nav className='hidden md:flex items-center space-x-8'>
-            <Link
-              href='https://haerulr2.dev/#home'
-              className='text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest'
-            >
-              Home
-            </Link>
-            <Link
-              href='https://haerulr2.dev/#work'
-              className='text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest'
-            >
-              Projects
-            </Link>
-            <Link
-              href='https://haerulr2.dev/#about'
-              className='text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest'
-            >
-              About
-            </Link>
-            <Link
-              href='/'
-              className='text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest'
-            >
-              Blog
-            </Link>
-          </nav>
-
-          <div className='hidden md:block'>
-            <button
-              onClick={() =>
-                (window.location.href = 'https://haerulr2.dev/#contact')
-              }
-              className={cn(
-                'border border-white px-5 py-2 text-sm uppercase tracking-widest',
-                'hover:bg-white hover:text-black transition-colors'
-              )}
-            >
-              Contact
-            </button>
-          </div>
-
-          <button
-            className='md:hidden text-white'
-            onClick={() => setIsOpen(!isOpen)}
+                Back
+              </Link>
+              <div className='h-5 w-px bg-[var(--color-border)]'></div>
+            </>
+          )}
+          <Link
+            href='https://haerulr2.dev'
+            className='text-base font-semibold tracking-tight text-[var(--color-text-primary)] no-underline transition-opacity hover:opacity-80'
           >
-            {isOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
+            haerulr2<span className='text-[var(--color-accent)]'>.dev</span>
+          </Link>
+        </div>
+
+        {/* Desktop links */}
+        <div className='hidden items-center gap-7 md:flex'>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className='text-sm font-medium text-[var(--color-text-secondary)] transition-colors duration-150 hover:text-[var(--color-text-primary)] no-underline'
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <a
+            href='https://github.com/haerulr2'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-flex items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] transition-all hover:border-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] no-underline'
+          >
+            <FileText size={13} />
+            CV / Resume
+          </a>
+
+          {/* Theme toggle */}
+          {mounted ? (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className='flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-transparent text-[var(--color-text-secondary)] transition-all duration-150 hover:border-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] cursor-pointer'
+              aria-label='Toggle theme'
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+          ) : (
+            <div className='h-9 w-9 rounded-[var(--radius-md)] border border-transparent' />
+          )}
+        </div>
+
+        {/* Mobile: theme toggle + hamburger */}
+        <div className='flex items-center gap-2 md:hidden'>
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className='flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border)] bg-transparent text-[var(--color-text-secondary)] cursor-pointer'
+              aria-label='Toggle theme'
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+          )}
+          <button
+            className='flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-text-secondary)] cursor-pointer bg-transparent border-none'
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label='Toggle navigation menu'
+            aria-expanded={isOpen}
+            aria-controls='mobile-menu'
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -115,56 +124,34 @@ export default function Navbar() {
       {/* Mobile menu */}
       {isOpen && (
         <motion.div
+          id='mobile-menu'
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className='md:hidden bg-black'
+          className='border-t border-[var(--color-border)] bg-[var(--color-bg-primary)] px-6 py-4 space-y-2 md:hidden'
         >
-          <div className='container mx-auto px-4 py-8'>
-            <nav className='flex flex-col space-y-6'>
-              <Link
-                href='#features'
-                className='text-neutral-400 hover:text-white py-2 text-2xl font-light'
-                onClick={() => setIsOpen(false)}
-              >
-                Features
-              </Link>
-              <Link
-                href='#work'
-                className='text-neutral-400 hover:text-white py-2 text-2xl font-light'
-                onClick={() => setIsOpen(false)}
-              >
-                Work
-              </Link>
-              <Link
-                href='#process'
-                className='text-neutral-400 hover:text-white py-2 text-2xl font-light'
-                onClick={() => setIsOpen(false)}
-              >
-                Process
-              </Link>
-              <Link
-                href='#pricing'
-                className='text-neutral-400 hover:text-white py-2 text-2xl font-light'
-                onClick={() => setIsOpen(false)}
-              >
-                Pricing
-              </Link>
-              <button
-                onClick={() =>
-                  (window.location.href = 'https://haerulr2.dev/#contact')
-                }
-                className={cn(
-                  'border border-white px-5 py-3 text-sm uppercase tracking-widest',
-                  'hover:bg-white hover:text-black transition-colors w-full mt-4'
-                )}
-              >
-                Contact
-              </button>
-            </nav>
-          </div>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className='block py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)] no-underline'
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href='https://github.com/haerulr2'
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={() => setIsOpen(false)}
+            className='inline-flex items-center gap-2 py-2 text-sm font-medium text-[var(--color-accent)] no-underline'
+          >
+            <FileText size={15} />
+            CV / Resume
+          </a>
         </motion.div>
       )}
-    </header>
+    </nav>
   );
 }
