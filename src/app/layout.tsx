@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
+import { Geist_Mono } from 'next/font/google';
+import { ThemeProvider } from './components/ThemeProvider';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const dmSans = DM_Sans({
   subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-sans',
 });
 
 const geistMono = Geist_Mono({
@@ -23,11 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang='en' className={`${dmSans.variable} ${geistMono.variable} scroll-smooth`} suppressHydrationWarning>
+      <body className='antialiased'>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
