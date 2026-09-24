@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Menu, X, Sun, Moon, FileText } from 'lucide-react';
 
 const emptySubscribe = () => () => {};
