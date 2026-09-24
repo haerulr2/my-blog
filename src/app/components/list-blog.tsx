@@ -6,18 +6,21 @@ export default async function ListBlog() {
   const posts = await getBlogPosts();
   
   return (
-    <section id='blog' className='py-20'>
-      <div className='container mx-auto px-4 md:px-8'>
-        <div className='flex flex-col gap-1 min-w-1/2 max-w-2/3 mb-10 mx-auto'>
-          <h2 className='text-xl font-bold text-start'>
+    <section id='blog' className='border-b border-[var(--color-border)]'>
+      <div className='mx-auto max-w-[1100px] px-6 py-16 md:px-12 md:py-20'>
+        <div className='mb-10'>
+          <span className='mb-3 block text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]'>
+            Blog
+          </span>
+          <h2 className='text-2xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-3xl mb-2'>
             Build Logs, Thought Dumps, & Digital Debris.
           </h2>
-          <p className='text-neutral-400 mb-4 text-start'>
+          <p className='text-[var(--color-text-secondary)] leading-relaxed max-w-xl'>
             Unfiltered thoughts, build logs, and dev breakdowns. Straight from
             my terminal to yours.
           </p>
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {posts.map((post) => (
             <CardBlog key={post.slug} post={post} />
           ))}
@@ -26,4 +29,3 @@ export default async function ListBlog() {
     </section>
   );
 }
- 
