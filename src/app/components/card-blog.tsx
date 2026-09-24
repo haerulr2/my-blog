@@ -7,9 +7,10 @@ import { BlogPost } from "@/utils";
 
 interface CardBlogProps {
   post: BlogPost;
+  priority?: boolean;
 }
 
-export default function CardBlog({ post }: CardBlogProps) {
+export default function CardBlog({ post, priority = false }: CardBlogProps) {
   return (
     <Link
       href={`/post/${post.slug}`}
@@ -19,7 +20,8 @@ export default function CardBlog({ post }: CardBlogProps) {
       <div className="overflow-hidden">
         <Image
           src={post.image}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          priority={priority}
           className="w-full aspect-3/2 object-cover transition-transform duration-300 group-hover:scale-105"
           alt={post.title}
           width={600}
